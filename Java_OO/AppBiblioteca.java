@@ -1,5 +1,4 @@
-import java.util.Scanner;
-public class Biblioteca{
+public class AppBiblioteca{
     public static void main(String args[]){
         
       Livro l1 = new Livro("LOTR", "Tolkien", 1994, "Ficção");
@@ -12,5 +11,9 @@ public class Biblioteca{
 
       l1.emprestar();
       l2.emprestar();
+
+      l1.exibirInfo();
+      l2.exibirInfo();
+      l3.exibirInfo();
     }
 }

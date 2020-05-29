@@ -1,5 +1,3 @@
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.TitlePaneLayout;
-
 public class Livro {
     private String  titulo;
     private String  autor;

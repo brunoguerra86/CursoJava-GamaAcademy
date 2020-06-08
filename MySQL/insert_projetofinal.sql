@@ -11,3 +11,5 @@ insert into tbl_usuario values(null, 'usuario1@itau.com','','Usuario X','usuariX
 
 select * from tbl_usuario;
 delete from tbl_usuario where id = 7
+
+drop table tbl_departamento

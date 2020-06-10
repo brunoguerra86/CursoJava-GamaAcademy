@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +15,7 @@ import br.com.brunoguerra.projetofinal.dao.UsuarioDAO;
 import br.com.brunoguerra.projetofinal.model.Usuario;
 
 @RestController
+@CrossOrigin("*")
 public class UsuarioController {
 
 	@Autowired 
@@ -30,10 +33,24 @@ public class UsuarioController {
 			return ResponseEntity.notFound().build(); 		// HTTP 404
 		}
 		else {  // usuário existe
-			if(res.getSenha().equals(dadosLogin.getSenha()))
+			if(res.getSenha().equals(dadosLogin.getSenha())) {
+				res.setSenha("****");
 				return ResponseEntity.ok(res); 				// HTTP 200
-			else
+			}
+			else {
 				return ResponseEntity.status(403).build(); 	// HTTP 403
+			}
+		}
+	}
+	
+	@PutMapping("/usuario/update")
+	public ResponseEntity<Usuario> atualizarUsuario(@RequestBody Usuario novosDados){
+		try {
+			dao.save(novosDados);
+			return ResponseEntity.ok(novosDados);
+		}
+		catch(Exception ex) {
+			return ResponseEntity.status(400).build();
 		}
 	}
 }

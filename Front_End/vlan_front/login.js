@@ -4,9 +4,10 @@ function autenticar(){
 
     //console.log(txtEmail + " / " + txtSenha);
 
+
     var loginMsg = {
-        email : txtEmail,
-        senha : txtSenha
+        email    : txtEmail,
+        senha    : txtSenha
     }
 
     var cabecalho = {
